@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>show page</title>
+{% endblock %}
+{% block content %}
+
+      <table class = " table table-dark table-hover w-50 m-auto mt-5" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>address</th>
+                <th colspan="2" class="text-center">Action</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+               {% for student in all_student %}
+               <tr>
+                  <td>{{ student.id }}</td>
+                  <td>{{ student.name }}</td>
+                  <td>{{ student.roll }}</td>
+                  <td>{{ student.address }}</td>
+               <td>
+                   <a href="{% url 'update_url' student.id %}">
+                       <button class="btn btn-warning col-12">&nbsp update</button>
+                   </a>
+               </td>
+               <td>
+                   <a href="{% url 'delete_url' student.id %}">
+                       <button class="btn btn-primary col-12">&nbsp delete</button>
+                   </a>
+               </td>
+
+           {% endfor %}
+           </tr>
+
+        </tbody>
+      </table>
+
+
+
+{% endblock %}
